@@ -1,0 +1,22 @@
+/.idea
+/.idea_modules
+/RUNNING_PID
+
+# general
+*~
+*.log
+tmp
+dump
+.DS_Store
+
+# SBT
+dist
+project/boot
+project/target
+project/plugins/target
+target
+.target
+
+# Play
+logs
+RUNNING_PID

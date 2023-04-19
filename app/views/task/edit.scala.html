@@ -1,0 +1,19 @@
+@(id: Long, taskForm: Form[models.Task])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+
+@import helper._
+
+@main("Edit Task") {
+
+  <h2>AEdit Task</h2>
+
+  @form(routes.TaskController.update(id)) {
+
+      @inputText(taskForm("name"))
+      @inputText(taskForm("comments"))
+      @checkbox(taskForm("completed"))
+
+      <input type="submit" value="Update">
+
+  }
+
+}

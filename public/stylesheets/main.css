@@ -1,0 +1,64 @@
+input[type=text], input[type=password] {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Set a style for all buttons */
+  button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    margin-right: 150px;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+    display: inline-block;
+  }
+
+  #user-login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin: 12px 0;
+    margin-left: 50px;
+    padding: 12px 20px;
+  }
+
+  h1{
+    text-align: center;
+    margin-right: 80px;
+  }
+
+  .editBtn{
+    background-color: #04AA6D;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    display: inline-block;
+  }
+
+  .deleteBtn{
+    background-color: #04AA6D;
+    color: white;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    display: inline-block;
+  }
+
+  .createBtn{
+    background-color: #04AA6D;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+  }

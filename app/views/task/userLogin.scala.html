@@ -1,0 +1,69 @@
+@(
+    form1: Form[models.User],
+    postUrl: Call
+)(implicit request: MessagesRequestHeader)
+
+@import helper._
+@import play.api.test.CSRFTokenHelper._
+@import play.filters.csrf.CSRF
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+</head>
+
+<body id="user-login">
+<div id="content">
+
+    <div id="user-login-form">
+
+        <h1>ToDo List</h1>
+
+        @request.flash.data.map{ case (name, value) =>
+            <div>@name: @value</div>
+        }
+
+        @* Global errors are not tied to any particular form field *@
+        @if(form1.hasGlobalErrors) {
+            @form1.globalErrors.map { error: FormError =>
+                <div>
+                    Error: @error.key: @error.message
+                </div>
+            }
+        }
+
+        @helper.form(postUrl, 'id -> "user-login-form") {
+
+        @helper.CSRF.formField
+
+        @helper.inputText(
+            form1("username"),
+            '_label -> "Username",
+            'placeholder -> "username",
+            'id -> "username",
+            'size -> 60,
+            '_showConstraints -> false
+        )
+
+        @helper.inputPassword(
+            form1("password"),
+            '_label -> "Password",
+            'placeholder -> "password",
+            'id -> "password",
+            'size -> 60,
+            '_showConstraints -> false
+        )
+      
+        <button>Login/Register</button>
+       
+        }
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
+

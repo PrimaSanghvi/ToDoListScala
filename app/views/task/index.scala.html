@@ -1,0 +1,48 @@
+@(tasks: List[Task], taskForm: Form[models.Task])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+
+@import helper._
+
+@main("Todo List") {
+
+    <h2>@tasks.size task(s)</h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Comments</th>
+          <th scope="col">Completed</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @tasks.map { task =>
+            <tr>
+                <td>@task.id</td>
+                <td>@task.name</td>
+                <td>@task.comments</td>
+                <td>@task.completed</td>
+                <td>
+                  @form(routes.TaskController.edit(task.id.getOrElse(0))) {
+                      <input type="submit" value="Edit" class="editBtn">
+                  }
+                  @form(routes.TaskController.delete(task.id.getOrElse(0))) {
+                      <input type="submit" value="Delete" class="deleteBtn">
+                  }
+                </td>
+            </tr>
+        }
+      </tbody>
+    </table>
+
+    <h2>Add a new task</h2>
+
+    @form(routes.TaskController.create) {
+        @inputText(taskForm("name"), '_label -> "Task Name", '_showConstraints -> false)
+        @inputText(taskForm("comments"), '_label -> "Comments")
+        @checkbox(taskForm("completed"), '_label -> "Completed", '_help -> "")
+        <input type="submit" value="Create" class="createBtn">
+    }
+
+}
